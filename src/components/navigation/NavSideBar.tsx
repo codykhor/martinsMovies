@@ -10,14 +10,19 @@ interface SideNavProps {
 }
 
 export default function NavSideBar({isOpen, onClose}: SideNavProps) {
-
     return (
         <>
+            {/* Overlay */}
+            {isOpen && (
+                <div
+                    className="fixed inset-0 z-40"
+                    onClick={onClose}
+                />
+            )}
+
             {/* Sidebar */}
-            <div className={`fixed top-0 right-0 h-screen w-100 bg-[#2a2a2a] z-50 transform transition-transform duration-300 ease-in-out
-                ${isOpen ? 'translate-x-0' : 'translate-x-full'} lg:relative lg:top-0 lg:h-screen lg:z-auto
-                ${isOpen ? 'lg:translate-x-0' : 'lg:translate-x-full'}
-            `}>
+            <div className={`fixed top-0 right-0 h-screen w-96 bg-[#2a2a2a] z-50 transform transition-transform duration-300 ease-in-out
+                ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
                 <div className="flex flex-col h-full">
                     <div className="bg-[#262626] px-6 py-3 border-b border-gray-600/50">
                         <h2 className="text-lg text-white font-bold text-center tracking-wider">MENU</h2>
@@ -28,8 +33,7 @@ export default function NavSideBar({isOpen, onClose}: SideNavProps) {
                                 key={item.path}
                                 href={item.path}
                                 onClick={onClose}
-                                className="flex items-center justify-between px-6 py-3 border-b border-gray-600/50 transition-colors group"
-                            >
+                                className="flex items-center justify-between px-6 py-3 border-b border-gray-600/50 transition-colors group">
                                 <span className="text-gray-300 text-md font-light transition-colors">
                                     {item.label}
                                 </span>
