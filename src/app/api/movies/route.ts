@@ -1,4 +1,4 @@
-import { getImdbId, listPopularMovies, searchMovies, Movie } from "@/lib/Movie";
+import { getImdbId, listPopularMovies, searchMovies, Movie } from "@/services/movie";
 import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {

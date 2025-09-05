@@ -9,8 +9,7 @@ export default function AppLayout({children}: { children: React.ReactNode; }) {
 
     return (
         <>
-            <nav
-                className={`bg-white shadow-sm fixed top-0 left-0 z-40 transition-all duration-300 ${isSidebarOpen ? 'right-85' : 'right-0'}`}>
+            <nav className={`bg-white shadow-sm fixed top-0 left-0 z-40 transition-all duration-300 ${isSidebarOpen ? 'right-85' : 'right-0'}`}>
                 <NavTopBar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen}/>
             </nav>
 

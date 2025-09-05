@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import {usePathname} from "next/navigation";
-import {SearchIcon, Logo, UserIcon, GlobeIcon} from "../libraryIcons"
+import {Logo, GlobeIcon} from "../libraryIcons"
 import Hamburger from 'hamburger-react'
 import React from "react";
-import {navItems} from "@/lib/types";
+import {navItems} from "@/lib/constants";
+import {Search, User} from 'lucide-react';
 
 export default function NavTopBar({isSidebarOpen, setIsSidebarOpen}: {
     isSidebarOpen: boolean;
@@ -26,9 +27,9 @@ export default function NavTopBar({isSidebarOpen, setIsSidebarOpen}: {
                 <div className="hidden lg:flex items-center space-x-8">
                     {navItems.map((item) => (
                         <Link key={item.path}
-                            href={item.path}
-                            className={`text-sm font-medium ${pathname === item.path ? "text-primary" : "text-gray-700 hover:text-primary"
-                            }`}>
+                              href={item.path}
+                              className={`text-sm font-medium ${pathname === item.path ? "text-primary" : "text-gray-700 hover:text-primary"
+                              }`}>
                             {item.label}
                         </Link>
                     ))}
@@ -46,7 +47,8 @@ export default function NavTopBar({isSidebarOpen, setIsSidebarOpen}: {
                     {/* Utility and Login */}
                     <div className="hidden lg:flex items-center space-x-6">
                         <Link href="#" className="relative">
-                            <SearchIcon/>
+                            {/*<SearchIcon/>*/}
+                            <Search height={16} width={16} strokeWidth={3}/>
                         </Link>
                         <Link href="#" className="relative">
                             <GlobeIcon height={18} width={18}/>
@@ -54,8 +56,8 @@ export default function NavTopBar({isSidebarOpen, setIsSidebarOpen}: {
                                 className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full h-4 w-4 flex items-center justify-center">2</span>
                         </Link>
                         <button
-                            className="bg-primary text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-primary-dark transition-colors flex items-center gap-2">
-                            <UserIcon width={12} height={12}/>LOGIN
+                            className="bg-primary text-white px-4 py-2 rounded-md text-sm font-black hover:bg-primary-dark transition-colors flex items-center gap-2">
+                            <User width={14} height={14}/>LOGIN
                         </button>
                     </div>
                 </div>

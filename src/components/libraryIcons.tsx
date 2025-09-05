@@ -4,17 +4,6 @@ interface IconProps {
     height?: number;
 }
 
-export function SearchIcon({className, width = 20, height = 20, ...restParams}: IconProps) {
-    return (
-        <svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox="0 0 20 20" fill="currentColor"
-             className={className} {...restParams}>
-            <path fillRule="evenodd"
-                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                  clipRule="evenodd"/>
-        </svg>
-    );
-}
-
 export function PlayIcon({className, width = 20, height = 20, ...restParams}: IconProps) {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox="0 0 20 20" fill="currentColor"
@@ -75,16 +64,6 @@ export function Logo({className}: { className?: string }) {
                 <circle fill="#F0E1B7" cx="23.882" cy="169.717" r="6.125"/>
                 <rect x="83.144" y="235.66" fill="#454444" width="355.384" height="71.782"/>
             </g>
-        </svg>
-    );
-}
-
-export function UserIcon({className, width = 20, height = 20, ...restParams}: IconProps) {
-    return (
-        <svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox="0 0 20 20" fill="none"
-             className={className} {...restParams} strokeWidth="1.5" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round"
-                  d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/>
         </svg>
     );
 }
