@@ -1,12 +1,14 @@
 "use client"
 
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
+
+const KEY = "watchedMovieIds";
 
 export function useWatched() {
     const [watched, setWatched] = useState<Set<number>>(new Set());
 
     useEffect(() => {
-        const stored = localStorage.getItem("watchedMovieIds");
+        const stored = localStorage.getItem(KEY);
         if (stored) {
             setWatched(new Set(JSON.parse(stored)));
         }
@@ -20,12 +22,12 @@ export function useWatched() {
             next.add(id);
         }
         setWatched(next);
-        localStorage.setItem("watchedMovieIds", JSON.stringify([...next]));
+        localStorage.setItem(KEY, JSON.stringify([...next]));
     }
 
     function isWatched(id: number) {
         return watched.has(id);
     }
 
-    return { isWatched, toggle };
+    return {isWatched, toggle};
 }

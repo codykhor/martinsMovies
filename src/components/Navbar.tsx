@@ -1,16 +1,16 @@
 "use client"
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { SearchIcon, WatchlistIcon } from "./libraryIcons";
+import {usePathname} from "next/navigation";
+import {SearchIcon, WatchlistIcon} from "./libraryIcons";
 import Logo from "./libraryIcons"
 
 const navItems = [
-    { label: "Home", path: "/" },
-    { label: "Pages", path: "/pages" },
-    { label: "Movies & TV Shows", path: "/movies" },
-    { label: "Blog", path: "/blog" },
-    { label: "Contact Us", path: "/contact" },
+    {label: "Home", path: "/"},
+    {label: "Pages", path: "/pages"},
+    {label: "Movies & TV Shows", path: "/movies"},
+    {label: "Blog", path: "/blog"},
+    {label: "Contact Us", path: "/contact"},
 ];
 
 export default function Navbar() {
@@ -23,7 +23,7 @@ export default function Navbar() {
                 <div className="flex justify-between items-center h-16">
                     {/* Logo */}
                     <Link href="/" className="flex items-center">
-                        <Logo className="w-12 h-12 text-gray-900" />
+                        <Logo className="w-12 h-12 text-gray-900"/>
                     </Link>
 
                     {/* Navigation Links */}
@@ -35,7 +35,7 @@ export default function Navbar() {
                                 className={`text-sm font-medium ${pathname === item.path
                                     ? "text-primary"
                                     : "text-gray-700 hover:text-primary"
-                                    }`}
+                                }`}
                             >
                                 {item.label}
                             </Link>
@@ -44,14 +44,16 @@ export default function Navbar() {
 
                     {/* Right side buttons */}
                     <div className="flex items-center space-x-4">
-                        <button className="text-gray-700 hover:text-primary">
-                            <SearchIcon className="h-5 w-5" />
-                        </button>
-                        <Link href="/watchlist" className="relative">
-                            <WatchlistIcon className="h-5 w-5 text-gray-700 hover:text-primary" />
-                            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">2</span>
+                        <Link href="#" className="relative">
+                            <SearchIcon/>
                         </Link>
-                        <button className="bg-primary text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-primary-dark transition-colors">
+                        <Link href="#" className="relative">
+                            <WatchlistIcon className="h-5 w-5 text-gray-700 hover:text-primary"/>
+                            <span
+                                className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">2</span>
+                        </Link>
+                        <button
+                            className="bg-primary text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-primary-dark transition-colors">
                             LOGIN
                         </button>
                     </div>
