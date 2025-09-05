@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Quicksand } from "next/font/google";
 import "./globals.css";
-import NavTopBar from "@/components/navigation/NavTopBar";
+import AppLayout from "@/components/AppLayout";
 
 const quicksand = Quicksand({
     subsets: ["latin"],
@@ -27,12 +27,9 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={`${quicksand.variable} font-sans antialiased bg-gray-50`}>
-                <div className="flex min-h-screen">
-                    <NavTopBar />
-                    <main className="flex-1 transition-all duration-300 ease-in-out pt-16">
-                        {children}
-                    </main>
-                </div>
+                <AppLayout>
+                    {children}
+                </AppLayout>
             </body>
         </html>
     );
