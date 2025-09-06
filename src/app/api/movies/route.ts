@@ -1,4 +1,6 @@
-import { getImdbId, listPopularMovies, searchMovies, Movie } from "@/services/movie";
+import { getImdbId, listPopularMovies, searchMovies } from "@/services/movie";
+import { Movie, TMDBMovie } from "@/lib/types";
+import { mapGenreIdsToNames } from "@/constants/server";
 import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
@@ -9,8 +11,14 @@ export async function GET(req: Request) {
     const base = query ? await searchMovies(query, page) : await listPopularMovies(page)
 
     const results = await Promise.all(
-        base.results.map(async (movie: Movie) => ({
-            ...movie,
+        base.results.map(async (movie: TMDBMovie): Promise<Movie> => ({
+            id: movie.id,
+            title: movie.title,
+            genres: await mapGenreIdsToNames(movie.genre_ids),
+            overview: movie.overview,
+            release_date: movie.release_date,
+            vote_average: movie.vote_average,
+            poster_path: movie.poster_path,
             imdb_id: await getImdbId(movie.id)
         }))
     )

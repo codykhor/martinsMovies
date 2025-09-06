@@ -5,7 +5,7 @@ import {usePathname} from "next/navigation";
 import {Logo, GlobeIcon} from "../libraryIcons"
 import Hamburger from 'hamburger-react'
 import React from "react";
-import {navItems} from "@/lib/constants";
+import {navItems} from "@/constants/client";
 import {Search, User} from 'lucide-react';
 
 export default function NavTopBar({isSidebarOpen, setIsSidebarOpen}: {

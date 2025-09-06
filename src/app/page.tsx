@@ -1,6 +1,6 @@
 import MovieCard from "@/components/MovieCard";
 import HeroBanner from "@/components/HeroBanner";
-import { Movie } from "@/lib/Movie";
+import { Movie } from "@/lib/types";
 import SearchBar from "@/components/SearchBar";
 import Pagination from "@/components/Pagination";
 
@@ -18,10 +18,10 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ q
 
     return (
         <div className="min-h-screen bg-gray-50">
-            <HeroBanner title="Movie Grid 3" />
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                <SearchBar/>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <HeroBanner title="Martin's Movies" />
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-32">
+                <SearchBar />
+                <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 gap-4">
                     {data.results.map((movie: Movie) => <MovieCard key={movie.id} movie={movie} />)}
                 </div>
                 <Pagination page={data.page} totalPages={Math.min(data.total_pages, 500)} query={q ?? undefined} />

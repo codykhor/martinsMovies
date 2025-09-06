@@ -26,3 +26,7 @@ export async function getImdbId(movieId: number) {
     const data = await tmdb(`/movie/${movieId}/external_ids`);
     return data.imdb_id;
 }
+
+export async function getGenreList() {
+    return tmdb('/genre/movie/list');
+}

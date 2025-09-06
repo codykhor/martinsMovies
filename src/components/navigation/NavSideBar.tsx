@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import {ChevronRight} from "lucide-react";
-import {navItems} from "@/lib/constants";
+import {navItems} from "@/constants/client";
 
 interface SideNavProps {
     isOpen: boolean;
