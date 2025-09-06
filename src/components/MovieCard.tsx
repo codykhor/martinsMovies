@@ -1,20 +1,21 @@
 "use client"
 
-import { Movie } from "@/lib/types";
-import { useWatched } from "@/hooks/useWatched";
+import {Movie} from "@/lib/types";
+import {useWatched} from "@/hooks/useWatched";
 import Image from "next/image";
-import { PlayIcon, StarIcon } from "./libraryIcons";
-import { Play } from "lucide-react";
+import {StarIcon} from "./libraryIcons";
+import {Play} from "lucide-react";
+import Link from "next/link";
 
-export default function MovieCard({ movie }: { movie: Movie }) {
-    const { isWatched, toggle } = useWatched();
+export default function MovieCard({movie}: { movie: Movie }) {
+    const {isWatched, toggle} = useWatched();
     const watched = isWatched(movie.id);
     const poster = movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : null;
 
     return (
         <div
-            className="group relative cursor-pointer bg-white rounded-lg overflow-hidden shadow hover:shadow-lg transform hover:-translate-y-2 transition-all duration-300 w-full max-w-[470px] md:max-w-[350px] mx-auto flex flex-col h-[700px]">
-            {/* Image Section - Fixed height portion of card */}
+            className="group relative cursor-pointer bg-white rounded-lg mb-8 overflow-hidden shadow hover:shadow-lg transform hover:-translate-y-2 transition-all duration-300 w-full max-w-[470px] md:max-w-[350px] mx-auto flex flex-col h-[700px]">
+            {/* Image Section */}
             <div className="relative bg-gray-100 w-full h-[350px] md:aspect-square flex-shrink-0">
                 {poster ? (
                     <Image
@@ -31,14 +32,14 @@ export default function MovieCard({ movie }: { movie: Movie }) {
                 )}
             </div>
 
-            {/* Info Section - Remaining space */}
+            {/* Info Section */}
             <div className="p-4 sm:p-5 lg:p-6 flex-1 flex flex-col justify-between min-h-0">
                 <div className="flex-1 min-h-0">
                     <h3 className="text-lg sm:text-xl lg:text-2xl font-medium text-gray-900 mb-2 line-clamp-2">{movie.title}</h3>
                     <div className="flex items-center space-x-2 py-1 mb-3">
                         <div className="flex justify-between w-full">
                             <div className="flex items-center">
-                                <StarIcon className="text-yellow-400" />
+                                <StarIcon className="text-yellow-400"/>
                                 <span className="text-sm text-gray-600">{movie.vote_average.toFixed(1)}/10</span>
                             </div>
                             <span className="text-sm">{movie.genres.slice(0, 2).join(", ")}</span>
@@ -51,20 +52,22 @@ export default function MovieCard({ movie }: { movie: Movie }) {
                     </div>
                 </div>
                 <div className="flex items-center space-x-2 flex-shrink-0">
-                    <a
-                        href={movie.imdb_id ? `https://www.imdb.com/title/${movie.imdb_id}/` : "#"}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-3 sm:px-4 py-2 bg-primary text-white rounded text-xs sm:text-sm font-semibold hover:bg-primary-dark"
-                    >
-                        DETAILS
-                    </a>
+                    {movie.imdb_id &&
+                        <Link
+                            href={movie.imdb_id ? `https://www.imdb.com/title/${movie.imdb_id}/` : "#"}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-3 sm:px-4 py-2 bg-primary text-white rounded text-xs sm:text-sm font-semibold hover:bg-primary-dark"
+                        >
+                            DETAILS
+                        </Link>
+                    }
                     <button
                         onClick={() => toggle(movie.id)}
                         className={`px-3 py-1 md:py-2 font-semibold rounded cursor-pointer text-xs sm:text-sm ${watched
                             ? "bg-indigo-900/75 text-white"
                             : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                            }`}
+                        }`}
                     >
                         {watched ? "Watched" : "Mark as Watched"}
                     </button>

@@ -1,5 +1,5 @@
-import { Genre } from "@/lib/types";
-import { getGenreList } from "@/services/movie";
+import {Genre} from "@/lib/types";
+import {getGenreList} from "@/services/movie";
 
 let genreCache: { [key: number]: string } | null = null;
 let cacheTimestamp: number | null = null;

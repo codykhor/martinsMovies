@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
-import { Quicksand } from "next/font/google";
+import type {Metadata} from "next";
+import {Quicksand} from "next/font/google";
 import "./globals.css";
 import AppLayout from "@/components/AppLayout";
 
@@ -14,23 +14,23 @@ export const metadata: Metadata = {
     description: "Your favorite movie collection app",
     icons: {
         icon: [
-            { url: '/favicon.svg', type: 'image/svg+xml' },
+            {url: '/favicon.svg', type: 'image/svg+xml'},
         ],
     },
 };
 
 export default function RootLayout({
-    children,
-}: Readonly<{
+                                       children,
+                                   }: Readonly<{
     children: React.ReactNode;
 }>) {
     return (
         <html lang="en">
-            <body className={`${quicksand.variable} font-sans antialiased bg-gray-50`}>
-                <AppLayout>
-                    {children}
-                </AppLayout>
-            </body>
+        <body className={`${quicksand.variable} font-sans antialiased bg-gray-50`}>
+        <AppLayout>
+            {children}
+        </AppLayout>
+        </body>
         </html>
     );
 }
