@@ -59,7 +59,7 @@ export default function MovieCard({movie}: { movie: Movie }) {
                             rel="noopener noreferrer"
                             className="px-3 sm:px-4 py-2 bg-primary text-white rounded text-xs sm:text-sm font-semibold hover:bg-primary-dark"
                         >
-                            DETAILS
+                            READ MORE
                         </Link>
                     }
                     <button
