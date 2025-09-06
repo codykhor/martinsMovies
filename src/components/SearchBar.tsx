@@ -12,7 +12,7 @@ export default function SearchBar() {
 
     useEffect(() => {
         setQuery(params.get('q') || '');
-        setIsLoading(false); // Reset loading state when params change (new results loaded)
+        setIsLoading(false);
     }, [params]);
 
     const handleSubmit = (e: FormEvent) => {
